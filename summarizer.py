@@ -50,17 +50,12 @@ def get_wordnet_tag(nltk_tag):
         # Use noun as a default POS tag in lemmatization
         return wordnet.NOUN
 
-def stem(sentences):
-    
-    stemmer = PorterStemmer()
-    stemmed = []
-    for sent in sentences:
-        new_sent = []
-        for word,tag in sent:
-            new_sent.append((stemmer.stem(word), tag))
-        stemmed.append(new_sent)
-    return stemmed
 
+"""
+Produce lemmas of all the words in each of the sentences.
+Returns a list of lists of tuples, where the first element is the
+lemma of the original word, and the second element is the POS tag.
+"""
 def lemmatize(sentences):
 
     lemmatizer = WordNetLemmatizer()
@@ -75,18 +70,39 @@ def lemmatize(sentences):
 
 
 """
+Produce stems of all the words in each of the sentences.
+Returns a list of lists of tuples, where the first element is the
+stem of the original word, and the second element is the POS tag.
+"""
+def stem(sentences):
+    
+    stemmer = PorterStemmer()
+    stemmed = []
+    for sent in sentences:
+        new_sent = []
+        for word,tag in sent:
+            new_sent.append((stemmer.stem(word), tag))
+        stemmed.append(new_sent)
+    return stemmed
+
+
+"""
 Print side-by-side comparsion of lemmatization and stemming.
 """
-def lemma_vs_stem():
-    print(len(sentences))
-    print(len(lemmatized_sentences))
-    print(len(stemmed_sentences))
+def lemma_vs_stem(sentences, lemmatized_sentences, stemmed_sentences):
     for i in range(len(lemmatized_sentences)):
         for j in range(len(lemmatized_sentences[i])):
-            print(sentences[i][j][0], lemmatized_sentences[i][j][0], stemmed_sentences[i][j][0])
+            print(sentences[i][j][0], lemmatized_sentences[i][j][0], \
+                stemmed_sentences[i][j][0])
 
 
-if __name__ == '__main__':
+"""
+Main function.
+"""
+def main():
     sentences = preprocess('covid.txt')
     lemmatized_sentences = lemmatize(sentences)
-    stemmed_sentences = stem(sentences)
+    stemmed_sentences = stem(lemmatized_sentences)
+
+if __name__ == '__main__':
+    main()
