@@ -2,7 +2,7 @@
 # summarizer.py
 
 import nltk
-from nltk.stem import WordNetLemmatizer
+from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.corpus import wordnet
 
 """
@@ -50,24 +50,43 @@ def get_wordnet_tag(nltk_tag):
         # Use noun as a default POS tag in lemmatization
         return wordnet.NOUN
 
+def stem(sentences):
+    
+    stemmer = PorterStemmer()
+    stemmed = []
+    for sent in sentences:
+        new_sent = []
+        for word,tag in sent:
+            new_sent.append((stemmer.stem(word), tag))
+        stemmed.append(new_sent)
+    return stemmed
+
 def lemmatize(sentences):
 
     lemmatizer = WordNetLemmatizer()
     lemmatized = []
     for sent in sentences:
-        for (word,tag) in sent:
+        new_sent = []
+        for word,tag in sent:
             wordnet_tag = get_wordnet_tag(tag)
-            lemmatized.append((lemmatizer.lemmatize(word, wordnet_tag), tag))
-            print(word, lemmatizer.lemmatize(word, wordnet_tag))
+            new_sent.append((lemmatizer.lemmatize(word, wordnet_tag), tag))
+        lemmatized.append(new_sent)
     return lemmatized
+
+
+"""
+Print side-by-side comparsion of lemmatization and stemming.
+"""
+def lemma_vs_stem():
+    print(len(sentences))
+    print(len(lemmatized_sentences))
+    print(len(stemmed_sentences))
+    for i in range(len(lemmatized_sentences)):
+        for j in range(len(lemmatized_sentences[i])):
+            print(sentences[i][j][0], lemmatized_sentences[i][j][0], stemmed_sentences[i][j][0])
 
 
 if __name__ == '__main__':
     sentences = preprocess('covid.txt')
     lemmatized_sentences = lemmatize(sentences)
-    #print(lemmatized_sentences)
-
-
-
-    # chunks = noun_verb_chunking(sentences)
-    # print(chunks)
+    stemmed_sentences = stem(sentences)
