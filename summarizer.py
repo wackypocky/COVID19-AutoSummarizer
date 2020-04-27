@@ -10,6 +10,12 @@ from nltk import RegexpParser
 from collections import defaultdict
 
 
+def get_raw_sentences(file_name):
+    f = open(file_name, 'r')
+    sentences = nltk.sent_tokenize(f.read())
+    return sentences
+
+
 """
 Remove stopwords from sentences. Returns modified sentences.
 """
@@ -182,10 +188,13 @@ def main():
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
     freqs = get_term_freqs(chunked_sentences)
-    # for key,value in sorted(freqs.items(), reverse=True, key=lambda item: item[1]):
-    #     print(get_term_weight(key, freqs, chunked_sentences))
-    for w in get_sentence_weights(chunked_sentences, freqs):
-        print(w)
+    sentence_weights = get_sentence_weights(chunked_sentences, freqs)
+    average_weight = sum(sentence_weights) / len(sentence_weights)
+
+    og_sentences = get_raw_sentences('covid.txt')
+    for i in range(len(og_sentences)):
+        if sentence_weights[i] > 2 * average_weight:
+            print(og_sentences[i])
 
 
 if __name__ == '__main__':
