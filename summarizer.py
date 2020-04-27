@@ -2,6 +2,7 @@
 # summarizer.py
 
 import re
+import math
 import nltk
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.corpus import wordnet, stopwords
@@ -152,12 +153,25 @@ def get_term_freqs(sentences):
 Calculate the weight of a term within term_freqs. Returns a
 float weight value.
 """
-def get_term_weight(term, term_freqs):
+def get_term_weight(term, term_freqs, sentences):
     term_freq = term_freqs[term]
-    n = len(term_freqs)
-    term_weight = term_freq * 1000.0 / float(n)
-    return term_weight
+    num_sentences = len(sentences)
+    term_SF = 0
+    for sent in sentences:
+        if term in sent:
+            term_SF += 1
+    term_ISF = math.log(num_sentences / float(term_SF))
+    return term_freq * term_ISF
 
+
+def get_sentence_weights(sentences, term_freqs):
+    weights = []
+    for sent in sentences:
+        sent_weight = 0
+        for term in sent:
+            sent_weight += get_term_weight(term, term_freqs, sentences)
+        weights.append(sent_weight)
+    return weights
 
 """
 Main function.
@@ -168,8 +182,10 @@ def main():
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
     freqs = get_term_freqs(chunked_sentences)
-    for key, value in sorted(freqs.items(), reverse=True, key=lambda item: item[1]):
-        print(key, value)
+    # for key,value in sorted(freqs.items(), reverse=True, key=lambda item: item[1]):
+    #     print(get_term_weight(key, freqs, chunked_sentences))
+    for w in get_sentence_weights(chunked_sentences, freqs):
+        print(w)
 
 
 if __name__ == '__main__':
