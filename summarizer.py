@@ -15,7 +15,7 @@ def remove_stopwords(sentences):
     stop_words = set(stopwords.words('english'))
     filtered_sentences = []
     for sent in sentences:
-        filtered_sent = [word for word in sent if not word.lower() in stop_words]
+        filtered_sent = [(w,t) for (w,t) in sent if not w.lower() in stop_words]
         filtered_sentences.append(filtered_sent)
     return filtered_sentences
 
@@ -36,8 +36,8 @@ def preprocess(file_name):
     # tokenize and add POS tags
     sentences = nltk.sent_tokenize(raw_text)
     sentences = [nltk.word_tokenize(sent) for sent in sentences]
-    sentences = remove_stopwords(sentences)
     sentences = [nltk.pos_tag(sent) for sent in sentences]
+    sentences = remove_stopwords(sentences)
     return sentences
 
 
