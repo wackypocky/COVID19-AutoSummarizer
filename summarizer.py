@@ -6,6 +6,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.corpus import wordnet, stopwords
 from nltk import RegexpParser
+from collections import defaultdict
 
 
 """
@@ -136,6 +137,29 @@ def chunk(sentences):
 
 
 """
+Calculate the frequencies of all unique terms in the sentences.
+Returns a dict of terms that map to integer frequencies.
+"""
+def get_term_freqs(sentences):
+    term_freqs = defaultdict(int)
+    for sent in sentences:
+        for pair in sent:
+            term_freqs[pair] += 1
+    return term_freqs
+
+
+"""
+Calculate the weight of a term within term_freqs. Returns a
+float weight value.
+"""
+def get_term_weight(term, term_freqs):
+    term_freq = term_freqs[term]
+    n = len(term_freqs)
+    term_weight = term_freq * 1000.0 / float(n)
+    return term_weight
+
+
+"""
 Main function.
 """
 def main():
@@ -143,8 +167,9 @@ def main():
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
-    for sent in chunked_sentences:
-        print(sent)
+    freqs = get_term_freqs(chunked_sentences)
+    for key, value in sorted(freqs.items(), reverse=True, key=lambda item: item[1]):
+        print(key, value)
 
 
 if __name__ == '__main__':
