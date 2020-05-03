@@ -2,6 +2,7 @@
 # summarizer.py
 
 import re
+import sys
 import math
 import nltk
 from nltk.stem import WordNetLemmatizer, PorterStemmer
@@ -36,10 +37,13 @@ word and its POS tag.
 """
 def preprocess(file_name):
 
-    f = open(file_name, 'r')
-
-    # protect certain characters from splitting
-    raw_text = re.sub(r'(@)', r'_\1_', f.read())
+    with open(file_name, 'r') as f:
+        title = f.readline() # title of article
+        date = f.readline()
+        region = f.readline()
+        tags = f.readline() # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
+        # protect certain characters from splitting
+        raw_text = re.sub(r'(@)', r'_\1_', f.read())
 
     # tokenize and add POS tags
     sentences = nltk.sent_tokenize(raw_text)
@@ -183,7 +187,9 @@ def get_sentence_weights(sentences, term_freqs):
 Main function.
 """
 def main():
-    sentences = preprocess('covid.txt')
+    num_sentences = int(sys.argv[1])
+    filepath = 'articles/Coronavirusdisease(COVID-19)adviceforthepublic:Mythbusters.txt'
+    sentences = preprocess(filepath)
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
@@ -191,10 +197,17 @@ def main():
     sentence_weights = get_sentence_weights(chunked_sentences, freqs)
     average_weight = sum(sentence_weights) / len(sentence_weights)
 
-    og_sentences = get_raw_sentences('covid.txt')
-    for i in range(len(og_sentences)):
-        if sentence_weights[i] > 2 * average_weight:
-            print(og_sentences[i])
+    og_sentences = get_raw_sentences(filepath)
+    # for i in range(len(og_sentences)):
+    #     if sentence_weights[i] > 2 * average_weight:
+    #         summary.append(og_sentences[i])
+
+    # Sort by average_weight and pick top sentences
+    ranked_sentence = sorted(((sentence_weights[i],s) for i,s in enumerate(og_sentences)), reverse=True)
+    # print("Indexes of top ranked_sentence order are ", ranked_sentence)
+
+    for i in range(num_sentences):
+        print(ranked_sentence[i][1] + " ")
 
 
 if __name__ == '__main__':

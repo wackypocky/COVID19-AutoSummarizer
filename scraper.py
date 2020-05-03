@@ -90,6 +90,8 @@ def main():
                     tags = object['tags']
                     for tag in tags:
                         tag_info.append(tag['label'] + "_" + str(tag['count']) + "_" + str(tag['score']))
+                else:
+                    tag_info = 'n/a'
 
                 if 'publisherRegion' in object:
                     region = object['publisherRegion']
