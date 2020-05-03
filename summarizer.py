@@ -35,7 +35,7 @@ sentences, and tokenizing all of the words. Uses POS-tagging to
 return a list of lists of tuples, where the tuples contain a
 word and its POS tag.
 """
-def preprocess(file_name):
+def preprocess(file_name, num_sentences):
 
     with open(file_name, 'r') as f:
         title = f.readline() # title of article
@@ -44,6 +44,13 @@ def preprocess(file_name):
         tags = f.readline() # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
         # protect certain characters from splitting
         raw_text = re.sub(r'(@)', r'_\1_', f.read())
+
+    # check if there are more sentences than needed
+    sentencelist = raw_text.split('\n')
+    if len(sentencelist) < num_sentences:
+        print("Text has fewer (or equal number of) sentences than requested summary:")
+        print(raw_text)
+        exit(0)
 
     # tokenize and add POS tags
     sentences = nltk.sent_tokenize(raw_text)
@@ -189,7 +196,8 @@ Main function.
 def main():
     num_sentences = int(sys.argv[1])
     filepath = 'articles/Coronavirusdisease(COVID-19)adviceforthepublic:Mythbusters.txt'
-    sentences = preprocess(filepath)
+
+    sentences = preprocess(filepath, num_sentences)
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
