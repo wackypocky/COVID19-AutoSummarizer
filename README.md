@@ -4,6 +4,11 @@ A text summarization project with the goal automatically summarizing articles sc
 
 ## Usage
 
+You will need to first install the packages in requirements.txt using:
+```
+pip install -r requirements.txt 
+```
+
 To scrape articles from Google based on a search query and save the title and body of the article into a text file:
 ```
 python scraper.py [query] [number of search results to return]
