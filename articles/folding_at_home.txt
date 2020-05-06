@@ -1,6 +1,6 @@
-Folding@home
-n/a
-n/a
+You can help fight the coronavirus. All you need is a computer
+Thu, 26 Mar 2020 13:30:00 GMT
+United States
 []
 Staying home isn’t the only way to help fight the coronavirus pandemic.
 Hundreds of thousands of volunteers have added their home computers to a vast network that forms a virtual supercomputer called Folding@home. The Folding@home project, which uses crowdsourced computing power to run simulations of proteins for researchers studying diseases, announced in February that it would begin analyzing proteins found in the coronavirus behind the ongoing pandemic (SN: 3/4/20). These proteins are tools that help the virus infect human cells. Using computer simulations, researchers are mapping the coronavirus’s proteins, in hopes of revealing vulnerabilities that can be attacked with new drugs.

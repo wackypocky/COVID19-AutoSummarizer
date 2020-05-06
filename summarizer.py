@@ -11,6 +11,10 @@ from nltk import RegexpParser
 import collections
 from collections import defaultdict
 
+TITLE = ""
+DATE = ""
+REGION = ""
+
 
 def get_raw_sentences(file_name):
     f = open(file_name, 'r')
@@ -108,10 +112,14 @@ word and its POS tag.
 """
 def preprocess(file_name, num_sentences):
 
+    global TITLE
+    global DATE
+    global REGION
+
     with open(file_name, 'r') as f:
-        title = f.readline() # title of article
-        date = f.readline()
-        region = f.readline()
+        TITLE = f.readline() # title of article
+        DATE = f.readline()
+        REGION = f.readline()
         tags = f.readline() # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
         # protect certain characters from splitting
         raw_text = f.read()
@@ -303,6 +311,13 @@ def main():
         index_map[og_index] = ind
 
     sorted_indices = collections.OrderedDict(sorted(index_map.items()))
+    print("Title:", TITLE, end="")
+    if DATE != 'n/a\n':
+        print("Published on:",DATE, end="")
+    if REGION != 'n/a\n':
+        print("Location:", REGION, end="")
+    print()
+    print("Summary of Text:")
     for key, val in sorted_indices.items():
         print(summary[val] + " ")
 
