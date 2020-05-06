@@ -59,6 +59,8 @@ def get_search_weights(sentences, query, pos):
                     for query_syn in query_syns:
                         if word_syn.lemmas()[0].name() == word[0]:
                             sim = word_syn.wup_similarity(query_syn)
+                        else:
+                            sim = 0
                         if sim is not None and sim > THRESHOLD:
                             # print(word[0], sim)
                             score += sim
