@@ -16,6 +16,74 @@ def get_raw_sentences(file_name):
     sentences = nltk.sent_tokenize(f.read())
     return sentences
 
+"""
+Converts nltk-form parts of speech to wordnet-form parts of speech to allow for proper comparison.
+"""
+def nltk_to_wn_pos(nltk_pos):
+    translation = {
+        'NN': 'n',
+        'NNS': 'n',
+        'NNP': 'n',
+        'NNPS': 'n',
+        'PRP': 'n',
+        'VB': 'v',
+        'VBD': 'v',
+        'VBG': 'v',
+        'VBN': 'v',
+        'VBP': 'v',
+        'VBZ': 'v',
+        'JJ': 'a',
+        'JJR': 'a',
+        'JJS': 'a',
+        'RB': 'r',
+        'RBR': 'r',
+        'RBS': 'r',
+    }
+
+    return translation.get(nltk_pos, -1)
+
+"""
+Returns a list of amplifiers corresponding to sentences related to the search query.
+"""
+def get_search_weights(sentences, query, pos):
+    THRESHOLD = 0.76
+    query_syns = wordnet.synsets(query, pos=pos)
+    weights = []
+
+    for sentence in sentences:
+        score = 1
+        for word in sentence:
+            if nltk_to_wn_pos(word[1]) == pos:
+                word_syns = wordnet.synsets(word[0], pos=pos)
+                for word_syn in word_syns:
+                    for query_syn in query_syns:
+                        if word_syn.lemmas()[0].name() == word[0]:
+                            sim = word_syn.wup_similarity(query_syn)
+                        if sim is not None and sim > THRESHOLD:
+                            # print(word[0], sim)
+                            score += sim
+        weights.append(score)
+
+    return weights
+
+"""
+Enable/disable query-based summarization
+"""
+def ask_search():
+    enable = False
+    response = input('Would you like to summarize based on a certain term? [y][any other key]\n')
+
+    if response == 'y':
+        enable = True
+
+    if not enable:
+        return enable, None, None
+
+    query = input('Enter your term:\n')
+    pos = input('Enter your term\'s part of speech (noun=n, verb=v, adjective=a, adverb=r):\n')
+
+    return enable, query, pos
+
 
 """
 Remove stopwords from sentences. Returns modified sentences.
@@ -197,12 +265,18 @@ def main():
     num_sentences = int(sys.argv[1])
     filepath = 'articles/Coronavirusdisease(COVID-19)adviceforthepublic:Mythbusters.txt'
 
+    search_mode, query, pos = ask_search()
+
     sentences = preprocess(filepath, num_sentences)
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
     freqs = get_term_freqs(chunked_sentences)
     sentence_weights = get_sentence_weights(chunked_sentences, freqs)
+    if search_mode:
+        search_weights = get_search_weights(lemmatized_sentences, query, pos)
+        sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
+
     average_weight = sum(sentence_weights) / len(sentence_weights)
 
     og_sentences = get_raw_sentences(filepath)
