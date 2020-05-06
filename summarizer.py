@@ -114,21 +114,23 @@ def preprocess(file_name, num_sentences):
         region = f.readline()
         tags = f.readline() # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
         # protect certain characters from splitting
-        raw_text = re.sub(r'(@)', r'_\1_', f.read())
+        raw_text = f.read()
 
+    subbed_sentences = re.sub(r'(@)', r'_\1_', raw_text)
     # check if there are more sentences than needed
-    sentencelist = raw_text.split('\n')
-    if len(sentencelist) < num_sentences:
+
+    og_sentences = nltk.sent_tokenize(raw_text)
+    sentences = nltk.sent_tokenize(subbed_sentences)
+    if len(sentences) < num_sentences:
         print("Text has fewer (or equal number of) sentences than requested summary:")
         print(raw_text)
         exit(0)
 
     # tokenize and add POS tags
-    sentences = nltk.sent_tokenize(raw_text)
     sentences = [nltk.word_tokenize(sent) for sent in sentences]
     sentences = [nltk.pos_tag(sent) for sent in sentences]
     sentences = remove_stopwords(sentences)
-    return sentences, raw_text
+    return sentences, og_sentences
 
 
 """
@@ -266,7 +268,7 @@ Main function.
 """
 def main():
     num_sentences = int(sys.argv[1])
-    filepath = 'articles/Coronavirusdisease(COVID-19)adviceforthepublic:Mythbusters.txt'
+    filepath = 'articles/folding_at_home.txt'
 
     search_mode, query, pos = ask_search()
 
