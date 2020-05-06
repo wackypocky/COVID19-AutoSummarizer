@@ -8,6 +8,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.corpus import wordnet, stopwords
 from nltk import RegexpParser
+import collections
 from collections import defaultdict
 
 
@@ -290,9 +291,18 @@ def main():
     ranked_sentence = sorted(((sentence_weights[i],s) for i,s in enumerate(og_sentences)), reverse=True)
     # print("Indexes of top ranked_sentence order are ", ranked_sentence)
 
+    summary = []
     for i in range(num_sentences):
-        print(ranked_sentence[i][1] + " ")
+        summary.append(ranked_sentence[i][1])
 
+    index_map = {} # mapping of original index to current index
+    for ind, sentence in enumerate(summary):
+        og_index = og_sentences.index(sentence)
+        index_map[og_index] = ind
+
+    sorted_indices = collections.OrderedDict(sorted(index_map.items()))
+    for key, val in sorted_indices.items():
+        print(summary[val] + " ")
 
 if __name__ == '__main__':
     main()
