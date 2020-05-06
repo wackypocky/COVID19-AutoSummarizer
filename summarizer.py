@@ -128,7 +128,7 @@ def preprocess(file_name, num_sentences):
     sentences = [nltk.word_tokenize(sent) for sent in sentences]
     sentences = [nltk.pos_tag(sent) for sent in sentences]
     sentences = remove_stopwords(sentences)
-    return sentences
+    return sentences, raw_text
 
 
 """
@@ -270,7 +270,7 @@ def main():
 
     search_mode, query, pos = ask_search()
 
-    sentences = preprocess(filepath, num_sentences)
+    sentences, og_sentences = preprocess(filepath, num_sentences)
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
@@ -282,7 +282,7 @@ def main():
 
     average_weight = sum(sentence_weights) / len(sentence_weights)
 
-    og_sentences = get_raw_sentences(filepath)
+    # og_sentences = get_raw_sentences(filepath)
     # for i in range(len(og_sentences)):
     #     if sentence_weights[i] > 2 * average_weight:
     #         summary.append(og_sentences[i])
