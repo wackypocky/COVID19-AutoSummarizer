@@ -104,7 +104,8 @@ def main():
                     f.write(title + "\n")
                     f.write(date + "\n")
                     f.write(region + "\n")
-                    f.write(str(tag_info)+'\n')
+                    for tag in tag_info:
+                        f.write('\"' + str(tag_info) + '\"' +'\n')
                     f.write(text)
 
         # resp = requests.get(url=item['link'], headers=headers)

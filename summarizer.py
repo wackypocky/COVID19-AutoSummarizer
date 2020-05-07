@@ -4,6 +4,7 @@
 import re
 import sys
 import math
+import shlex
 import nltk
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.corpus import wordnet, stopwords
@@ -120,7 +121,7 @@ def preprocess(file_name, num_sentences):
         TITLE = f.readline() # title of article
         DATE = f.readline()
         REGION = f.readline()
-        tags = f.readline() # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
+        tags = shlex.split(f.readline()) # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
         # protect certain characters from splitting
         raw_text = f.read()
 
