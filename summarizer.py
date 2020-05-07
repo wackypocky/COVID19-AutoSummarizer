@@ -139,7 +139,7 @@ def preprocess(file_name, num_sentences):
     sentences = [nltk.word_tokenize(sent) for sent in sentences]
     sentences = [nltk.pos_tag(sent) for sent in sentences]
     sentences = remove_stopwords(sentences)
-    return sentences, og_sentences
+    return sentences, og_sentences, tags
 
 
 """
@@ -263,6 +263,20 @@ def get_term_weight(term, term_freqs, sentences):
     return term_freq * term_ISF
 
 
+def process_tags(tags):
+    processed = ''
+    for tag in tags:
+        data = tag.split('_')
+        if len(data) < 3:
+            continue
+        if float(data[2]) > 0.55:
+            processed += ' ' + data[0]
+    processed = nltk.word_tokenize(processed)
+    processed = nltk.pos_tag(processed)
+    processed = remove_stopwords([processed])
+    return processed[0]
+
+
 def get_sentence_weights(sentences, term_freqs):
     weights = []
     for sent in sentences:
@@ -277,16 +291,25 @@ Main function.
 """
 def main():
     num_sentences = int(sys.argv[1])
-    filepath = 'articles/folding_at_home.txt'
+    filepath = 'articles/nytimes_may_6.txt'
 
     search_mode, query, pos = ask_search()
 
-    sentences, og_sentences = preprocess(filepath, num_sentences)
+    sentences, og_sentences, tags = preprocess(filepath, num_sentences)
+
+    tags = process_tags(tags)
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
     freqs = get_term_freqs(chunked_sentences)
+
     sentence_weights = get_sentence_weights(chunked_sentences, freqs)
+
+    for tag in tags:
+        pos = get_wordnet_tag(tag[1])
+        search_weights = get_search_weights(lemmatized_sentences, tag[0], pos)
+        sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
+
     if search_mode:
         search_weights = get_search_weights(lemmatized_sentences, query, pos)
         sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]

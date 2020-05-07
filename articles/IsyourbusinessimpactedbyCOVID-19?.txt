@@ -1,7 +1,7 @@
 Is your business impacted by COVID-19?
 n/a
 Canada
-['COVID-19_1_0.7154707908630371', 'Business Account_1_0.695720911026001', 'Business Credit_1_0.6655228137969971', 'Canada_1_0.6164604425430298', 'business_3_0.5712632536888123', 'petroleum industry_3_0.560464084148407', 'Business Development Bank of Canada_2_0.5448367595672607', 'Government of Canada_1_0.5129885673522949']
+"COVID-19_1_0.7154707908630371" "Business Account_1_0.695720911026001" "Business Credit_1_0.6655228137969971" "Canada_1_0.6164604425430298" "business_3_0.5712632536888123" "petroleum industry_3_0.560464084148407" "Business Development Bank of Canada_2_0.5448367595672607" "Government of Canada_1_0.5129885673522949"
 Here are options for accessing credit as well as additional resources to support you through to a more stable time.
 Business Credit Availability Program (BCAP)
 Canada Emergency Business Account
