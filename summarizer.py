@@ -262,7 +262,10 @@ def get_term_weight(term, term_freqs, sentences):
     term_ISF = math.log(num_sentences / float(term_SF))
     return term_freq * term_ISF
 
-
+"""
+Process tags for keyword weighing. Returns list of tuples,
+where first element is the tag and second element is the POS.
+"""
 def process_tags(tags):
     processed = ''
     for tag in tags:
@@ -271,6 +274,14 @@ def process_tags(tags):
             continue
         if float(data[2]) > 0.55:
             processed += ' ' + data[0]
+    processed = nltk.word_tokenize(processed)
+    processed = nltk.pos_tag(processed)
+    processed = remove_stopwords([processed])
+    return processed[0]
+
+
+def process_title(title):
+    processed = title
     processed = nltk.word_tokenize(processed)
     processed = nltk.pos_tag(processed)
     processed = remove_stopwords([processed])
@@ -291,13 +302,17 @@ Main function.
 """
 def main():
     num_sentences = int(sys.argv[1])
-    filepath = 'articles/nytimes_may_6.txt'
+    filepath = 'articles/folding_at_home.txt'
 
     search_mode, query, pos = ask_search()
 
     sentences, og_sentences, tags = preprocess(filepath, num_sentences)
 
+    # Process title and tags with POS tagging
     tags = process_tags(tags)
+    title_keywords = process_title(TITLE)
+    print(title_keywords)
+
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
@@ -305,10 +320,18 @@ def main():
 
     sentence_weights = get_sentence_weights(chunked_sentences, freqs)
 
+
+    # use keyword search to weigh sentences with tags
     for tag in tags:
         pos = get_wordnet_tag(tag[1])
         search_weights = get_search_weights(lemmatized_sentences, tag[0], pos)
         sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
+
+    # use keyword search to weigh sentences with title
+    # for tag in title_keywords:
+    #     pos = get_wordnet_tag(tag[1])
+    #     search_weights = get_search_weights(lemmatized_sentences, tag[0], pos)
+    #     sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
 
     if search_mode:
         search_weights = get_search_weights(lemmatized_sentences, query, pos)
