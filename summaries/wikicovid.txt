@@ -1,0 +1,545 @@
+The incubation period for COVID‑19 is typically five to six days but may range from two to 14 days,[47][48] although 97.5% of people who develop symptoms will do so within 11.5 days of infection. [63]
+
+Cause
+
+See also: Severe acute respiratory syndrome coronavirus 2
+
+Transmission
+
+Respiratory droplets produced when a man sneezes, visualised using Tyndall scattering
+
+Play media
+
+A video discussing the basic reproduction number and case fatality rate in the context of the pandemic
+
+COVID-19 is a new disease, and the ways it spreads between people are under investigation, including: the predominant role of small droplets, the extent to when and how it may be transmitted through air, and how long expelled droplets remain infectious on surfaces. [115][116][117] Likewise, progressively greater increases in healthcare capacity—called raising the line—such as by increasing bed count, personnel, and equipment, helps to meet increased demand. [130] For the European Centre for Disease Prevention and Control (ECDC) face masks "... could be considered especially when visiting busy closed spaces ..." but "... only as a complementary measure ..."[131] Several countries have recommended that healthy individuals wear face masks or cloth face coverings (like scarves or bandanas) at least in certain public settings, including China,[132] Hong Kong,[133] Spain,[134] Italy (Lombardy region),[135] Russia,[136] and the United States. Hydrogen peroxide is used to help eliminate bacterial spores in the alcohol; it is "not an active substance for hand antisepsis". [150][151][152] The WHO and NIH do not oppose the use of non-steroidal anti-inflammatory drugs (NSAIDs) such as ibuprofen for symptoms,[124][153] and the FDA says currently there is no evidence that NSAIDs worsen COVID‑19 symptoms. [124][155][156][157] One study from April 22 found that people with COVID-19 and hypertension had lower all-cause mortality when on these medications. [164] For healthcare professionals caring for people with COVID‑19, the CDC recommends placing the person in an Airborne Infection Isolation Room (AIIR) in addition to using standard precautions, contact precautions, and airborne precautions. May prevent the need for intubation and ventilation
+
+Tidal volume
+
+6mL per kg and can be reduced to 4mL/kg
+
+Plateau airway pressure
+
+Keep below 30 cmH2O if possible (high respiratory rate (35 per minute) may be required)
+
+Positive end-expiratory pressure
+
+Moderate to high levels
+
+Prone positioning
+
+For worsening oxygenation
+
+Fluid management
+
+Goal is a negative balance of 0.5–1.0L per day
+
+Antibiotics
+
+For secondary bacterial infections
+
+Glucocorticoids
+
+Not recommended
+
+Experimental treatment
+
+See also: § Research
+
+Research into potential treatments started in January 2020,[180] and several antiviral drugs are in clinical trials. "[203][204]
+
+Prognosis
+
+The severity of diagnosed COVID-19 cases in China[205]
+
+Case fatality rates by age group:
+
+China, as of 11 February 2020[206]
+
+South Korea, as of 30 April 2020[207]
+
+Spain, as of 5 May 2020[208]
+
+Italy, as of 28 April 2020[209]
+
+Case fatality rate in China depending on other health problems. [229]
+
+Case fatality rates (%) by age and country or US state
+
+Age
+
+0–9
+
+10–19
+
+20–29
+
+30–39
+
+40–49
+
+50–59
+
+60–69
+
+70–79
+
+80-89
+
+90+
+
+Canada as of 5 May[230]
+
+0.0
+
+0.1
+
+0.6
+
+6.4
+
+21.5
+
+China as of 11 February[206]
+
+0.0
+
+0.2
+
+0.2
+
+0.2
+
+0.4
+
+1.3
+
+3.6
+
+8.0
+
+14.8
+
+Denmark as of 5 May[231]
+
+0.2
+
+4.4
+
+16.7
+
+26.4
+
+44.3
+
+Germany as of 5 May[232]
+
+0.3
+
+6.9
+
+23.7
+
+Israel as of 3 May[233]
+
+0.0
+
+0.0
+
+0.0
+
+0.9
+
+0.9
+
+3.1
+
+9.7
+
+22.9
+
+30.8
+
+31.3
+
+Italy as of 28 April[209]
+
+0.1
+
+0.0
+
+0.1
+
+0.3
+
+0.9
+
+2.6
+
+9.8
+
+24.2
+
+29.0
+
+24.7
+
+KY state as of 5 May[234]
+
+0.0
+
+0.0
+
+0.0
+
+0.2
+
+0.6
+
+2.3
+
+6.8
+
+13.3
+
+27.9
+
+MA state as of 5 May[235]
+
+0.0
+
+0.0
+
+0.0
+
+0.1
+
+0.4
+
+1.3
+
+4.5
+
+14.2
+
+24.7
+
+Netherlands as of 25 April[236]
+
+0.0
+
+0.3
+
+0.1
+
+0.2
+
+0.5
+
+1.5
+
+7.6
+
+23.2
+
+30.0
+
+29.3
+
+Norway as of 5 May[237]
+
+0.0
+
+0.0
+
+0.0
+
+0.0
+
+0.2
+
+0.4
+
+1.7
+
+8.5
+
+21.3
+
+50.4
+
+Portugal as of 5 May[238]
+
+0.0
+
+0.0
+
+0.0
+
+0.0
+
+0.2
+
+0.8
+
+3.1
+
+9.5
+
+17.8
+
+South Korea as of 30 April[207]
+
+0.0
+
+0.0
+
+0.0
+
+0.2
+
+0.2
+
+0.8
+
+2.6
+
+10.4
+
+24.3
+
+Spain as of 5 May[208]
+
+0.3
+
+0.4
+
+0.2
+
+0.3
+
+0.6
+
+1.5
+
+4.8
+
+13.9
+
+20.9
+
+21.9
+
+Sweden as of 5 May[239]
+
+0.9
+
+0.0
+
+0.4
+
+0.4
+
+0.9
+
+2.3
+
+7.4
+
+22.8
+
+32.0
+
+36.1
+
+Switzerland as of 5 May[240]
+
+0.0
+
+0.0
+
+0.0
+
+0.1
+
+0.1
+
+0.5
+
+2.9
+
+10.9
+
+25.9
+
+WA state as of 3 May[241]
+
+0.0
+
+0.2
+
+1.3
+
+9.1
+
+29.8
+
+Case fatality rates (%) by age in the United States
+
+Age
+
+0–19
+
+20–44
+
+45–54
+
+55–64
+
+65–74
+
+75–84
+
+85+
+
+United States as of 16 March[242]
+
+0.0
+
+0.1–0.2
+
+0.5–0.8
+
+1.4–2.6
+
+2.7–4.9
+
+4.3–10.5
+
+10.4–27.3
+
+Note: The lower bound includes all cases. Estimate of infection fatality rates and probability of severe disease course (%) by age based on cases from China[243]
+
+0–9
+
+10–19
+
+20–29
+
+30–39
+
+40–49
+
+50–59
+
+60–69
+
+70–79
+
+80+
+
+Severe disease
+
+0.0
+
+(0.0–0.0)
+
+0.04
+
+(0.02–0.08)
+
+1.0
+
+(0.62–2.1)
+
+3.4
+
+(2.0–7.0)
+
+4.3
+
+(2.5–8.7)
+
+8.2
+
+(4.9–17)
+
+11
+
+(7.0–24)
+
+17
+
+(9.9–34)
+
+18
+
+(11–38)
+
+Death
+
+0.0016
+
+(0.00016–0.025)
+
+0.0070
+
+(0.0015–0.050)
+
+0.031
+
+(0.014–0.092)
+
+0.084
+
+(0.041–0.19)
+
+0.16
+
+(0.076–0.32)
+
+0.60
+
+(0.34–1.3)
+
+1.9
+
+(1.1–3.9)
+
+4.3
+
+(2.5–8.4)
+
+7.8
+
+(3.8–13)
+
+Total infection fatality rate is estimated to be 0.66% (0.39–1.3). [247][248][249][250] These cases are believed to be lingering infection rather than reinfection,[250] or false positives due to remaining RNA fragments. [264]
+
+Other measures include the case fatality rate (CFR), which reflects the percent of diagnosed individuals who die from a disease, and the infection fatality rate (IFR), which reflects the percent of infected individuals (diagnosed and undiagnosed) who die from a disease. [266]
+
+Total confirmed cases over time
+
+Total deaths over time
+
+Total confirmed cases of COVID‑19 per million people, 10 April 2020[267]
+
+Total confirmed deaths due to COVID‑19 per million people, 10 April 2020[268]
+
+Infection fatality rate
+
+Our World in Data states that as of March 25, 2020, the infection fatality rate (IFR) cannot be accurately calculated. [290]
+
+Society and culture
+
+Name
+
+During the initial outbreak in Wuhan, China, the virus and disease were commonly referred to as "coronavirus" and "Wuhan coronavirus",[291][292][293] with the disease sometimes called "Wuhan pneumonia". [297]
+
+In January 2020, the World Health Organisation recommended 2019-nCov[298] and 2019-nCoV acute respiratory disease[299] as interim names for the virus and disease per 2015 guidance and international guidelines against using geographical locations (e.g. In the case of SARS-CoV-2, such research focuses on the S-spike protein that helps the virus intrude the ACE2 enzyme receptor. [323]
+
+Medications
+
+Main article: COVID-19 drug repurposing research
+
+At least 29 phase II–IV efficacy trials in COVID‑19 were concluded in March 2020 or scheduled to provide results in April from hospitals in China. 

@@ -1,0 +1,27 @@
+To date, there is still a variety of human diseases with unknown etiology. A viral origin has been suggested for many of these diseases, emphasizing the importance of a continuous search for new viruses1,2,3.
+
+Virus isolation from a child with acute respiratory disease
+
+In January 2003, a 7-month-old child was admitted to the hospital with coryza, conjunctivitis and fever. Chest radiography revealed typical features of bronchiolitis.
+
+Virus discovery by the VIDISCA method
+
+Identification of unknown pathogens using molecular biology tools is difficult because the target sequence is not known, so genome-specific PCR primers cannot be designed.
+
+Detection of HCoV-NL63 in patient specimens
+
+To show that HCoV-NL63 originated from the nasopharyngeal aspirate of the child, we designed a diagnostic RT-PCR that specifically detects HCoV-NL63. This test confirmed the presence of HCoV-NL63 in the clinical sample.
+
+Complete genome analysis of HCoV-NL63
+
+The genomes of coronaviruses have a characteristic organization. The 5′ two-thirds contain the 1a and 1b genes that encode the nonstructural polyproteins, followed by the genes encoding four structural proteins: spike , envelope , membrane and nucleocapsid . The genomes of known coronaviruses contain a variable number of unique characteristic open reading frames encoding nonstructural proteins either between the 1b and S genes, between the S and E genes, between the M and N genes, or downstream of the N gene.
+
+
+Discussion
+
+In this study we present a detailed description of a new human coronavirus. Thus far, only three human coronaviruses have been characterized if we include SARS-CoV; further characterization of HCoV-NL63 as the fourth member will provide important insight into the variation among human coronaviruses. HCoV-NL63 is a member of the group 1 coronaviruses and is most closely related to HCoV-229E, but the differences between them are prominent. First, they share on average only 65% sequence identity.
+
+Methods
+
+VIDISCA method.
+The virus was cultured on LLC-MK2 cells. Details of virus culture and patient descriptions are available in Supplementary Methods online. To remove residual cells and mitochondria, 110 μl of virus culture supernatant was spun for 10 min at maximum speed in an Eppendorf microcentrifuge. To remove chromosomal DNA and mitochondrial DNA from the lysed cells, 100 μl of supernatant was transferred to a fresh tube and treated with DNase I for 45 min at 37 °C .

@@ -1,0 +1,23 @@
+Antibodies raised against known viruses may not recognize the cultured virus, and virus-specific PCR methods may not amplify the new viral genome. Diagnostic tests for respiratory syncytial virus, adenovirus, influenza viruses A and B, parainfluenza virus types 1, 2 and 3, rhinovirus, enterovirus, HCoV-229E and HCoV-OC43 yielded negative results. Immunofluorescence assays to detect respiratory syncytial virus, adenovirus, influenza viruses A and B, and parainfluenza virus types 1, 2 and 3 remained negative.
+
+Virus discovery by the VIDISCA method Identification of unknown pathogens using molecular biology tools is difficult because the target sequence is not known, so genome-specific PCR primers cannot be designed. After the second PCR amplification step, unique and prominent DNA fragments were present in the test sample but not in the control (1 of 16 selective PCR reactions is shown in Fig. Thirteen of 16 fragments showed sequence similarity to members of the coronavirus family, but significant sequence divergence with known coronaviruses was apparent in all fragments, indicating that we had identified a new coronavirus.
+
+Detection of HCoV-NL63 in patient specimens To show that HCoV-NL63 originated from the nasopharyngeal aspirate of the child, we designed a diagnostic RT-PCR that specifically detects HCoV-NL63. The sequence of the RT-PCR product of the 1b gene was identical to that of the virus identified upon in vitro passage in LLC-MK2 cells (data not shown).
+
+Having confirmed that the cultured coronavirus originated from the child, the question remained as to whether this was an isolated clinical case, or whether HCoV-NL63 is circulating in humans.
+
+Complete genome analysis of HCoV-NL63 The genomes of coronaviruses have a characteristic organization.
+
+The 5′ two-thirds contain the 1a and 1b genes that encode the nonstructural polyproteins, followed by the genes encoding four structural proteins: spike (S), envelope (E), membrane (M) and nucleocapsid (N). The genomes of known coronaviruses contain a variable number of unique characteristic open reading frames (ORFs) encoding nonstructural proteins either between the 1b and S genes, between the S and E genes, between the M and N genes, or downstream of the N gene.
+
+To determine whether the HCoV-NL63 genome organization shares these characteristics, we constructed a cDNA library with purified virus stock as input material.
+
+We next aligned the sequence of HCoV-NL63 with the complete genomes of other coronaviruses. To confirm that HCoV-NL63 is a new member of the group 1 coronaviruses, we conducted phylogenetic analysis using the nucleotide sequence of the 1a, 1b, S, M and N genes (Fig.
+
+The presence of a single nonstructural gene between the S and E genes is noteworthy because almost all coronaviruses have two or more ORFs in this region, with the exception of PEDV and HCoV-OC43 (ref. An alignment of the HCoV-NL63 S protein sequence with those of other group 1 coronaviruses is shown in Supplementary Figure 4 online. The N-terminal region of the S protein has been implicated in binding to aminopeptidase N (group I coronaviruses) and sialic acid31,32,33, so the 179–amino acid insert in HCoV-NL63 might be involved in receptor binding and may explain the tropism of this virus in cell culture. Fourth, whereas HCoV-229E is fastidious in cell culture with a narrow host range, HCoV-NL63 replicates efficiently in monkey kidney cells. SARS-CoV is also able to replicate in monkey kidney cells (Vero-E6 cells34), yet the predicted S proteins of SARS-CoV and HCoV-NL63 do not share a domain that could explain the in vitro host cell range of these viruses. Other viral proteins may influence the cell tropism of a virus, but none of the HCoV-NL63 proteins were more closely related to SARS-CoV than to HCoV-229E.
+
+Variability at the 5′ end of the S gene, correlating with alterations in tropism, has also been described for the group 1 coronaviruses porcine respiratory coronavirus (PRCoV) and transmissible gastroenteritis virus (TGEV).
+
+Our results indicate that HCoV-NL63 is present in a significant number of respiratory tract illnesses of unknown etiology. The selective rounds of amplification were done using 'touchdown PCR': 10 cycles of 94 °C for 60 s, 65 °C for 30 s, and 72 °C for 1 min (annealing temperature reduced by 1 °C per cycle); The samples had been collected for routine viral diagnostic screening of people suffering from upper and/or lower respiratory tract diseases, and the patients consented that their samples be used for testing of respiratory viruses that included coronaviruses.
+
+A nested PCR was started using 5 μl of the first PCR product with 100 ng of primer repSZ-2 (5′-TTGGTAAACAAAAGATAACT-3′; 
