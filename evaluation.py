@@ -1,12 +1,19 @@
 import subprocess
 import os
 import re
-from summarizer import preprocess, lemmatize, stem, chunk, get_term_freqs, get_sentence_weights, get_search_weights, get_raw_sentences
+from noninteractive_summarizer import summarize
 import collections
 import nltk
 from nltk.translate.bleu_score import corpus_bleu
 from pythonrouge.pythonrouge import Pythonrouge
 
+"""
+Helper function to break file into tokenized sentences.
+"""
+def get_raw_sentences(file_name):
+    f = open(file_name, 'r')
+    sentences = nltk.sent_tokenize(f.read())
+    return sentences
 
 """
 Evaluation function.
@@ -35,63 +42,22 @@ def evaluate(gen_summary, ref_summary, genref_summaries):
     rouge_score = rouge.calc_score()
     return bleu_score, rouge_score
 
-
-"""
-Calls summarizer.py functions
-"""
-def summarize(filename, num_sentences):
-    filepath = "corpus/" + filename
-    search_mode = True
-    query = "help"
-    pos = "v"
-
-    sentences, og_sentences = preprocess(filepath, num_sentences)
-    lemmatized_sentences = lemmatize(sentences)
-    stemmed_sentences = stem(lemmatized_sentences)
-    chunked_sentences = chunk(stemmed_sentences)
-    freqs = get_term_freqs(chunked_sentences)
-    sentence_weights = get_sentence_weights(chunked_sentences, freqs)
-    if search_mode:
-        search_weights = get_search_weights(lemmatized_sentences, query, pos)
-        sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
-
-    average_weight = sum(sentence_weights) / len(sentence_weights)
-    ranked_sentence = sorted(((sentence_weights[i],s) for i,s in enumerate(og_sentences)), reverse=True)
-
-    summary = []
-    for i in range(num_sentences):
-        summary.append(ranked_sentence[i][1])
-
-    index_map = {} # mapping of original index to current index
-    for ind, sentence in enumerate(summary):
-        og_index = og_sentences.index(sentence)
-        index_map[og_index] = ind
-
-    sorted_indices = collections.OrderedDict(sorted(index_map.items()))
-    gen_summary = ""
-    for key, val in sorted_indices.items():
-        gen_summary += summary[val] + " "
-    gen_filepath = "summaries/" + filename
-    with open(gen_filepath, "w") as f:
-        f.write(gen_summary)
-    return gen_summary
-
 """
 Main function.
 """
 def main():
     cwd = os.getcwd()
-    ogdir = os.listdir(cwd + "/corpus")
-    refdir = os.listdir(cwd + "/references")
-    genrefdir = os.listdir(cwd+"/generatedrefs")
+    ogdir = os.listdir(cwd + "/eval_ogtext")
+    refdir = os.listdir(cwd + "/eval_references")
+    genrefdir = os.listdir(cwd+"/eval_generatedrefs")
     for file in ogdir:
         if file not in refdir:
-            print("error")
+            print("error: reference summary not found")
         else:
 
-            ref_filename = "references/" + file
+            ref_filename = "eval_references/" + file
             ref_sentences = get_raw_sentences(ref_filename)
-            print(len(ref_sentences))
+
             num_sentences = len(ref_sentences)
             with open(ref_filename, 'r') as f:
                 ref_summary = f.read()
@@ -99,7 +65,7 @@ def main():
             if file[:-4] not in genrefdir:
                 genref_summaries = []
             else:
-                sumdirname= "generatedrefs/" + file[:-4]
+                sumdirname= "eval_generatedrefs/" + file[:-4]
                 sumdir = os.listdir(sumdirname)
                 genref_summaries = []
                 for sumfile in sumdir:
@@ -109,7 +75,17 @@ def main():
                         num_sentences = len(genref_sentences)
                     with open(filename, 'r') as f:
                         genref_summaries.append(f.read())
-                gen_summary = summarize(file, num_sentences)
+
+                ogfilepath = "eval_ogtext/" + file
+                sorted_indices, summary = summarize(ogfilepath, num_sentences, False)
+                gen_summary = ""
+                for key, val in sorted_indices.items():
+                    gen_summary += summary[val] + " "
+
+                gen_filepath = "eval_gen_summaries/" + file
+                with open(gen_filepath, "w") as f:
+                    f.write(gen_summary)
+
                 bleu_score, rouge_score = evaluate(gen_summary, ref_summary, genref_summaries)
                 print(file + ":", "bleu - " + str(bleu_score) + ",", "rouge - " + str(rouge_score))
 

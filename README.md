@@ -6,7 +6,7 @@ A text summarization project with the goal of automatically summarizing articles
 
 You will need to first install the packages in requirements.txt using:
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 Then run
 ```
@@ -57,7 +57,7 @@ This is the format of articles produced by the scraper. If you would like to sum
 
 If you encounter the following error (where "path_to_pythonrouge" is the location of pythonrouge on your computer) when running evaluation.py
 ```
-subprocess.CalledProcessError: Command '['perl', 'path_to_pythonrouge/pythonrouge/RELEASE-1.5.5/ROUGE-1.5.5.pl', '-e', '[path_to_pythonrouge]/pythonrouge/RELEASE-1.5.5/data', '-a', '-n', '1', '-2', '4', '-u', '-x', '-l', '100', '-m', '-s', '-f', 'B', '-r', '1000', '-p', '0.5', '/tmp/tmpev7m7vla/setting.xml']' returned non-zero exit status 79.
+subprocess.CalledProcessError: Command '['perl', 'path_to_pythonrouge/RELEASE-1.5.5/ROUGE-1.5.5.pl', '-e', '[path_to_pythonrouge]/pythonrouge/RELEASE-1.5.5/data', '-a', '-n', '1', '-2', '4', '-u', '-x', '-l', '100', '-m', '-s', '-f', 'B', '-r', '1000', '-p', '0.5', '/tmp/tmpev7m7vla/setting.xml']' returned non-zero exit status 79.
 ```
 navigate to the pythonrouge directory with
 ```

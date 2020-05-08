@@ -12,7 +12,7 @@ Play media
 
 A video discussing the basic reproduction number and case fatality rate in the context of the pandemic
 
-COVID-19 is a new disease, and the ways it spreads between people are under investigation, including: the predominant role of small droplets, the extent to when and how it may be transmitted through air, and how long expelled droplets remain infectious on surfaces. [115][116][117] Likewise, progressively greater increases in healthcare capacity—called raising the line—such as by increasing bed count, personnel, and equipment, helps to meet increased demand. [130] For the European Centre for Disease Prevention and Control (ECDC) face masks "... could be considered especially when visiting busy closed spaces ..." but "... only as a complementary measure ..."[131] Several countries have recommended that healthy individuals wear face masks or cloth face coverings (like scarves or bandanas) at least in certain public settings, including China,[132] Hong Kong,[133] Spain,[134] Italy (Lombardy region),[135] Russia,[136] and the United States. Hydrogen peroxide is used to help eliminate bacterial spores in the alcohol; it is "not an active substance for hand antisepsis". [150][151][152] The WHO and NIH do not oppose the use of non-steroidal anti-inflammatory drugs (NSAIDs) such as ibuprofen for symptoms,[124][153] and the FDA says currently there is no evidence that NSAIDs worsen COVID‑19 symptoms. [124][155][156][157] One study from April 22 found that people with COVID-19 and hypertension had lower all-cause mortality when on these medications. [164] For healthcare professionals caring for people with COVID‑19, the CDC recommends placing the person in an Airborne Infection Isolation Room (AIIR) in addition to using standard precautions, contact precautions, and airborne precautions. May prevent the need for intubation and ventilation
+COVID-19 is a new disease, and the ways it spreads between people are under investigation, including: the predominant role of small droplets, the extent to when and how it may be transmitted through air, and how long expelled droplets remain infectious on surfaces. [66][6][17][19] Some medical procedures may result in the virus being transmitted easier than normal for such small droplets, known as airborne transmission. [17][19][67][68] Some people have been infected and recovered without showing symptoms, but uncertainties remain in terms of asymptomatic transmission. [75] The density of ACE2 in each tissue correlates with the severity of the disease in that tissue and some have suggested that decreasing ACE2 activity might be protective,[76][77] though another view is that increasing ACE2 using angiotensin II receptor blocker medications could be protective and these hypotheses need to be tested. [130] For the European Centre for Disease Prevention and Control (ECDC) face masks "... could be considered especially when visiting busy closed spaces ..." but "... only as a complementary measure ..."[131] Several countries have recommended that healthy individuals wear face masks or cloth face coverings (like scarves or bandanas) at least in certain public settings, including China,[132] Hong Kong,[133] Spain,[134] Italy (Lombardy region),[135] Russia,[136] and the United States. [150][151][152] The WHO and NIH do not oppose the use of non-steroidal anti-inflammatory drugs (NSAIDs) such as ibuprofen for symptoms,[124][153] and the FDA says currently there is no evidence that NSAIDs worsen COVID‑19 symptoms. [124][155][156][157] One study from April 22 found that people with COVID-19 and hypertension had lower all-cause mortality when on these medications. May prevent the need for intubation and ventilation
 
 Tidal volume
 
@@ -62,7 +62,7 @@ Spain, as of 5 May 2020[208]
 
 Italy, as of 28 April 2020[209]
 
-Case fatality rate in China depending on other health problems. [229]
+Case fatality rate in China depending on other health problems. [219] In a study by the National Health Commission (NHC) of China, men had a death rate of 2.8% while women had a death rate of 1.7%. [229]
 
 Case fatality rates (%) by age and country or US state
 
@@ -536,10 +536,4 @@ Name
 
 During the initial outbreak in Wuhan, China, the virus and disease were commonly referred to as "coronavirus" and "Wuhan coronavirus",[291][292][293] with the disease sometimes called "Wuhan pneumonia". [297]
 
-In January 2020, the World Health Organisation recommended 2019-nCov[298] and 2019-nCoV acute respiratory disease[299] as interim names for the virus and disease per 2015 guidance and international guidelines against using geographical locations (e.g. In the case of SARS-CoV-2, such research focuses on the S-spike protein that helps the virus intrude the ACE2 enzyme receptor. [323]
-
-Medications
-
-Main article: COVID-19 drug repurposing research
-
-At least 29 phase II–IV efficacy trials in COVID‑19 were concluded in March 2020 or scheduled to provide results in April from hospitals in China. 
+In January 2020, the World Health Organisation recommended 2019-nCov[298] and 2019-nCoV acute respiratory disease[299] as interim names for the virus and disease per 2015 guidance and international guidelines against using geographical locations (e.g. [342][343][14] The interleukin-6 receptor antagonist was approved by the FDA to undergo a phase III clinical trial assessing the medication's impact on COVID‑19 based on retrospective case studies for the treatment of steroid-refractory cytokine release syndrome induced by a different cause, CAR T cell therapy, in 2017. 
