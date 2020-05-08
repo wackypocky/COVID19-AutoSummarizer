@@ -1,2 +1,0 @@
-The Folding@home project, which uses crowdsourced computing power to run simulations of proteins for researchers studying diseases, announced in February that it would begin analyzing proteins found in the coronavirus behind the ongoing pandemic (SN: 3/4/20).
-Folding@home simulations give scientists a chance to uncover what Bowman calls “cryptic pockets” — potential docking sites for drugs that aren’t visible in still images of the protein, but are revealed as the protein wriggles around in a computer simulation.
