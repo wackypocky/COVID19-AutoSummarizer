@@ -33,9 +33,9 @@ python summarizer.py file_path summary_length
 ```
 where:
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file_path = path to the file you would like to summarize
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file_path = the string path to the file you would like to summarize
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary_length = the number of sentences in generated summary
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary_length = the integer number of sentences in generated summary
 <br />
 <br/>
 
