@@ -14,7 +14,7 @@ python3 nltk_download.py
 ```
 to install the required nltk packages. You may select the packages manually, or download the entire nltk library.
 
-If pythonrouge raises an error while running evaluation.py, navigate to the pythonrouge directory (usually you can see where this is from the error prompt) and run the script in buildExceptionDB by copy and pasting each line into your console or terminal.
+If pythonrouge raises an error while running evaluation.py, navigate to the pythonrouge directory (usually you can see where this is from the error prompt) and run the script in buildExceptionDB by copy/pasting it into your console or terminal.
 
 
 To scrape articles from Google based on a search query and save the title and body of the article into a text file:
