@@ -21,18 +21,18 @@ To scrape articles from Google based on a search query and save the title and bo
 ```
 python scraper.py search_query max_num_results
 ```
-where
+where:
 <br />
-search_query = the string query to Google Search on
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;search_query = the string query to Google Search on
 <br />
-max_num_results = the integer maximum number of desired results
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_num_results = the integer maximum number of desired results
 
 To summarize an article with the preferred number of sentences:
 ```
 python summarizer.py file_path summary_length
 ```
-where
+where:
 <br />
-file_path = path to the file you would like to summarize
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file_path = path to the file you would like to summarize
 <br />
-summary_length = the number of sentences in generated summary
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary_length = the number of sentences in generated summary
