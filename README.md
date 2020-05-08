@@ -15,13 +15,15 @@ python3 nltk_download.py
 to install the required nltk packages. You may select the packages manually, or download the entire nltk library.
 
 If pythonrouge raises an error while running evaluation.py, navigate to the pythonrouge directory (usually you can see where this is from the error prompt) and run the script in buildExceptionDB by copy/pasting it into your console or terminal.
-_
+<br />
+
 To scrape articles from Google based on a search query and save the title and body of the article into a text file:
 ```
 python scraper.py search_query max_num_results
 ```
 where
-search_query = the string query to Google Search on_
+search_query = the string query to Google Search on
+<br />
 max_num_results = the integer maximum number of desired results
 
 To summarize an article with the preferred number of sentences:
@@ -29,5 +31,6 @@ To summarize an article with the preferred number of sentences:
 python summarizer.py file_path summary_length
 ```
 where
-file_path = path to the file you would like to summarize_
+file_path = path to the file you would like to summarize
+<br />
 summary_length = the number of sentences in generated summary
