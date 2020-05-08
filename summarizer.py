@@ -16,11 +16,6 @@ DATE = ""
 REGION = ""
 
 
-def get_raw_sentences(file_name):
-    f = open(file_name, 'r')
-    sentences = nltk.sent_tokenize(f.read())
-    return sentences
-
 """
 Converts nltk-form parts of speech to wordnet-form parts of speech to allow for proper comparison.
 """
@@ -262,6 +257,10 @@ def get_term_weight(term, term_freqs, sentences):
     return term_freq * term_ISF
 
 
+"""
+Calculate the weights of each sentence in the list of sentences,
+using term_freqs. Returns a list of float weights.
+"""
 def get_sentence_weights(sentences, term_freqs):
     weights = []
     for sent in sentences:
@@ -280,22 +279,25 @@ def main():
 
     search_mode, query, pos = ask_search()
 
+    # Preprocessing
     sentences, og_sentences = preprocess(filepath, num_sentences)
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
+
+    # Noun-verb chunking and frequency calculation
     chunked_sentences = chunk(stemmed_sentences)
     freqs = get_term_freqs(chunked_sentences)
     sentence_weights = get_sentence_weights(chunked_sentences, freqs)
+
+    # Add keyword weights if search is enabled
     if search_mode:
         search_weights = get_search_weights(lemmatized_sentences, query, pos)
         sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
 
-    average_weight = sum(sentence_weights) / len(sentence_weights)
-
-    # Sort by average_weight and pick top sentences
+    # Rank sentences based on weights
     ranked_sentence = sorted(((sentence_weights[i],s) for i,s in enumerate(og_sentences)), reverse=True)
-    # print("Indexes of top ranked_sentence order are ", ranked_sentence)
 
+    # Derive original ordering of sentences
     summary = []
     for i in range(num_sentences):
         summary.append(ranked_sentence[i][1])
@@ -305,6 +307,7 @@ def main():
         og_index = og_sentences.index(sentence)
         index_map[og_index] = ind
 
+    # Output summary
     sorted_indices = collections.OrderedDict(sorted(index_map.items()))
     print("Title:", TITLE, end="")
     if DATE != 'n/a\n':
