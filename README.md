@@ -13,3 +13,8 @@ To scrape articles from Google based on a search query and save the title and bo
 ```
 python scraper.py [query] [number of search results to return]
 ```
+
+To summarize an article with the preferred number of sentences:
+```
+python summarizer.py [/path/to/file] [summary length]
+```

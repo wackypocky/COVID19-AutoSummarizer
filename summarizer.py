@@ -19,6 +19,8 @@ REGION = ""
 """
 Converts nltk-form parts of speech to wordnet-form parts of speech to allow for proper comparison.
 """
+
+
 def nltk_to_wn_pos(nltk_pos):
     translation = {
         'NN': 'n',
@@ -42,9 +44,12 @@ def nltk_to_wn_pos(nltk_pos):
 
     return translation.get(nltk_pos, -1)
 
+
 """
 Returns a list of amplifiers corresponding to sentences related to the search query.
 """
+
+
 def get_search_weights(sentences, query, pos):
     THRESHOLD = 0.76
     query_syns = wordnet.synsets(query, pos=pos)
@@ -68,12 +73,16 @@ def get_search_weights(sentences, query, pos):
 
     return weights
 
+
 """
 Enable/disable query-based summarization
 """
+
+
 def ask_search():
     enable = False
-    response = input('Would you like to summarize based on a certain term? [y][any other key]\n')
+    response = input(
+        'Would you like to summarize based on a certain term? [y][any other key]\n')
 
     if response == 'y':
         enable = True
@@ -82,7 +91,8 @@ def ask_search():
         return enable, None, None
 
     query = input('Enter your term:\n')
-    pos = input('Enter your term\'s part of speech (noun=n, verb=v, adjective=a, adverb=r):\n')
+    pos = input(
+        'Enter your term\'s part of speech (noun=n, verb=v, adjective=a, adverb=r):\n')
 
     return enable, query, pos
 
@@ -90,11 +100,14 @@ def ask_search():
 """
 Remove stopwords from sentences. Returns modified sentences.
 """
+
+
 def remove_stopwords(sentences):
     stop_words = set(stopwords.words('english'))
     filtered_sentences = []
     for sent in sentences:
-        filtered_sent = [(w,t) for (w,t) in sent if not w.lower() in stop_words]
+        filtered_sent = [(w, t)
+                         for (w, t) in sent if not w.lower() in stop_words]
         filtered_sentences.append(filtered_sent)
     return filtered_sentences
 
@@ -105,25 +118,36 @@ sentences, and tokenizing all of the words. Uses POS-tagging to
 return a list of lists of tuples, where the tuples contain a
 word and its POS tag.
 """
+
+
 def preprocess(file_name, num_sentences):
 
     global TITLE
     global DATE
     global REGION
 
-    with open(file_name, 'r') as f:
-        TITLE = f.readline() # title of article
-        DATE = f.readline()
-        REGION = f.readline()
-        tags = f.readline() # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
-        # protect certain characters from splitting
-        raw_text = f.read()
+    try:
+        with open(file_name, 'r') as f:
+            TITLE = f.readline()  # title of article
+            DATE = f.readline()
+            REGION = f.readline()
+            # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
+            tags = f.readline()
+            # read rest of file
+            raw_text = f.read()
+    except Exception as e:
+        print("An error occurred when processing your file:\n" +
+              str(e), file=sys.stderr)
+        sys.exit(1)
 
+    # protect certain characters from splitting
     subbed_sentences = re.sub(r'(@)', r'_\1_', raw_text)
-    # check if there are more sentences than needed
 
+    # tokenize
     og_sentences = nltk.sent_tokenize(raw_text)
     sentences = nltk.sent_tokenize(subbed_sentences)
+
+    # check if there are more sentences than needed
     if len(sentences) < num_sentences:
         print("Text has fewer (or equal number of) sentences than requested summary:")
         print(raw_text)
@@ -140,6 +164,8 @@ def preprocess(file_name, num_sentences):
 Return the equivalent wordnet POS tag for the given nltk
 POS tag.
 """
+
+
 def get_wordnet_tag(nltk_tag):
 
     if nltk_tag.startswith('J'):
@@ -160,6 +186,8 @@ Produce lemmas of all the words in each of the sentences.
 Returns a list of lists of tuples, where the first element is the
 lemma of the original word, and the second element is the POS tag.
 """
+
+
 def lemmatize(sentences):
 
     lemmatizer = WordNetLemmatizer()
@@ -178,6 +206,8 @@ Produce stems of all the words in each of the sentences.
 Returns a list of lists of tuples, where the first element is the
 stem of the original word, and the second element is the POS tag.
 """
+
+
 def stem(sentences):
 
     stemmer = PorterStemmer()
@@ -193,6 +223,8 @@ def stem(sentences):
 """
 Print side-by-side comparsion of lemmatization and stemming.
 """
+
+
 def lemma_vs_stem(sentences, lemmatized_sentences, stemmed_sentences):
     for i in range(len(lemmatized_sentences)):
         for j in range(len(lemmatized_sentences[i])):
@@ -204,6 +236,8 @@ def lemma_vs_stem(sentences, lemmatized_sentences, stemmed_sentences):
 Return a new set of POS-tagged words that have been
 chunked into NN, NNP, or VP clusters.
 """
+
+
 def chunk(sentences):
     grammar = r"""
         NN:     {<DT|PP\$>?<JJ>*<NN>}   # chunk determiner/possessive, adjectives and noun
@@ -234,6 +268,8 @@ def chunk(sentences):
 Calculate the frequencies of all unique terms in the sentences.
 Returns a dict of terms that map to integer frequencies.
 """
+
+
 def get_term_freqs(sentences):
     term_freqs = defaultdict(int)
     for sent in sentences:
@@ -246,6 +282,8 @@ def get_term_freqs(sentences):
 Calculate the weight of a term within term_freqs. Returns a
 float weight value.
 """
+
+
 def get_term_weight(term, term_freqs, sentences):
     term_freq = term_freqs[term]
     num_sentences = len(sentences)
@@ -261,6 +299,8 @@ def get_term_weight(term, term_freqs, sentences):
 Calculate the weights of each sentence in the list of sentences,
 using term_freqs. Returns a list of float weights.
 """
+
+
 def get_sentence_weights(sentences, term_freqs):
     weights = []
     for sent in sentences:
@@ -270,17 +310,34 @@ def get_sentence_weights(sentences, term_freqs):
         weights.append(sent_weight)
     return weights
 
+
 """
 Main function.
 """
-def main():
-    filepath = sys.argv[1]
-    num_sentences = int(sys.argv[2])
 
-    search_mode, query, pos = ask_search()
+
+def main():
+
+    if len(sys.argv) != 3:
+        print("Usage: python summarizer.py [/path/to/file] [summary length]",
+              file=sys.stderr)
+        sys.exit(1)
+
+    filepath = sys.argv[1]
+
+    if not sys.argv[2].isdigit():
+        print("Summary length must be an integer", file=sys.stderr)
+        sys.exit(1)
+
+    num_sentences = int(sys.argv[2])
 
     # Preprocessing
     sentences, og_sentences = preprocess(filepath, num_sentences)
+
+    # Prompt user for keyword
+    search_mode, query, pos = ask_search()
+
+    # Lemmatization and Stemming
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
 
@@ -292,17 +349,19 @@ def main():
     # Add keyword weights if search is enabled
     if search_mode:
         search_weights = get_search_weights(lemmatized_sentences, query, pos)
-        sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
+        sentence_weights = [a*b for a,
+                            b in zip(sentence_weights, search_weights)]
 
     # Rank sentences based on weights
-    ranked_sentence = sorted(((sentence_weights[i],s) for i,s in enumerate(og_sentences)), reverse=True)
+    ranked_sentence = sorted(
+        ((sentence_weights[i], s) for i, s in enumerate(og_sentences)), reverse=True)
 
     # Derive original ordering of sentences
     summary = []
     for i in range(num_sentences):
         summary.append(ranked_sentence[i][1])
 
-    index_map = {} # mapping of original index to current index
+    index_map = {}  # mapping of original index to current index
     for ind, sentence in enumerate(summary):
         og_index = og_sentences.index(sentence)
         index_map[og_index] = ind
@@ -311,13 +370,14 @@ def main():
     sorted_indices = collections.OrderedDict(sorted(index_map.items()))
     print("Title:", TITLE, end="")
     if DATE != 'n/a\n':
-        print("Published on:",DATE, end="")
+        print("Published on:", DATE, end="")
     if REGION != 'n/a\n':
         print("Location:", REGION, end="")
     print()
     print("Summary of Text:")
     for key, val in sorted_indices.items():
         print(summary[val] + " ")
+
 
 if __name__ == '__main__':
     main()
