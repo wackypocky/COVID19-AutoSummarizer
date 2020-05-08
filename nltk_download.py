@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # nltk_download.py
 
-# BEFORE running this script, run 'pip install --user -U nltk' and
-# 'pip install --user -U numpy' in your terminal. Then, when you
-# run this script, a GUI will appear. Click 'download' to download
-# the nltk library files in your home directory.
+# BEFORE running this script, and ensure that you have downloaded
+# the requirements in requirments.txt. Then, when you run this
+# script, a GUI will appear. Click 'download' to download the nltk
+# library files in your home directory.
 
 import nltk
 import ssl
