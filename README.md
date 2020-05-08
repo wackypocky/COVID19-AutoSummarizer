@@ -27,6 +27,8 @@ where:
 <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_num_results = the integer maximum number of desired results
 <br />
+<br />
+<br/>
 To summarize an article with the preferred number of sentences:
 ```
 python summarizer.py file_path summary_length
