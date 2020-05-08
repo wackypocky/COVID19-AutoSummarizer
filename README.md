@@ -12,10 +12,25 @@ Then run
 ```
 python3 nltk_download.py
 ```
-to install the required nltk packages. You may select the packages manually, or download the entire nltk library.
+to install the required nltk packages. You may select the packages manually, or download the entire nltk library using the nltk GUI. The required packages are: punkt, stopwords, wordnet.           
 <br />
 <br />
 ## Usage
+
+To run a test through all functionalities (scraper, summarizer, and evaluation):
+```
+./RunMe
+```
+This will also install all dependencies from requirements.txt and run nltk_download.py. 
+<br />
+You may need to run
+```
+chmod 700
+```
+on the RunMe file for execution permissions.
+<br />
+<br />
+<br />
 
 To scrape articles from Google based on a search query and save the title and body of the article into a text file:
 ```
