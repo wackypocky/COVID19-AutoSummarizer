@@ -13,11 +13,24 @@ Then run
 python3 nltk_download.py
 ```
 to install the required nltk packages. You may select the packages manually, or download the entire nltk library.
+<br />
 
 ## Error Handling
 
-If pythonrouge raises an error while running evaluation.py, navigate to the pythonrouge directory (usually you can see where this is from the error prompt) and run the script in buildExceptionDB by copy/pasting it into your console or terminal.
-<br />
+If you encounter the following error (where "path_to_pythonrouge" is the location of pythonrouge on your computer) when running evaluation.py
+```
+subprocess.CalledProcessError: Command '['perl', 'path_to_pythonrouge/pythonrouge/RELEASE-1.5.5/ROUGE-1.5.5.pl', '-e', '[path_to_pythonrouge]/pythonrouge/RELEASE-1.5.5/data', '-a', '-n', '1', '-2', '4', '-u', '-x', '-l', '100', '-m', '-s', '-f', 'B', '-r', '1000', '-p', '0.5', '/tmp/tmpev7m7vla/setting.xml']' returned non-zero exit status 79.
+```
+navigate to the pythonrouge directory with
+```
+cd path_to_pythonrouge
+```
+and run the following script:
+```
+cd RELEASE-1.5.5/data/
+rm WordNet-2.0.exc.db
+./WordNet-2.0-Exceptions/buildExeptionDB.pl ./WordNet-2.0-Exceptions ./smart_common_words.txt ./WordNet-2.0.exc.db
+```
 <br />
 
 ## Usage
