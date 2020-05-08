@@ -19,8 +19,6 @@ REGION = ""
 """
 Converts nltk-form parts of speech to wordnet-form parts of speech to allow for proper comparison.
 """
-
-
 def nltk_to_wn_pos(nltk_pos):
     translation = {
         'NN': 'n',
@@ -48,8 +46,6 @@ def nltk_to_wn_pos(nltk_pos):
 """
 Returns a list of amplifiers corresponding to sentences related to the search query.
 """
-
-
 def get_search_weights(sentences, query, pos):
     THRESHOLD = 0.76
     query_syns = wordnet.synsets(query, pos=pos)
@@ -77,8 +73,6 @@ def get_search_weights(sentences, query, pos):
 """
 Enable/disable query-based summarization
 """
-
-
 def ask_search():
     enable = False
     response = input(
@@ -100,8 +94,6 @@ def ask_search():
 """
 Remove stopwords from sentences. Returns modified sentences.
 """
-
-
 def remove_stopwords(sentences):
     stop_words = set(stopwords.words('english'))
     filtered_sentences = []
@@ -118,8 +110,6 @@ sentences, and tokenizing all of the words. Uses POS-tagging to
 return a list of lists of tuples, where the tuples contain a
 word and its POS tag.
 """
-
-
 def preprocess(file_name, num_sentences):
 
     global TITLE
@@ -164,8 +154,6 @@ def preprocess(file_name, num_sentences):
 Return the equivalent wordnet POS tag for the given nltk
 POS tag.
 """
-
-
 def get_wordnet_tag(nltk_tag):
 
     if nltk_tag.startswith('J'):
@@ -186,8 +174,6 @@ Produce lemmas of all the words in each of the sentences.
 Returns a list of lists of tuples, where the first element is the
 lemma of the original word, and the second element is the POS tag.
 """
-
-
 def lemmatize(sentences):
 
     lemmatizer = WordNetLemmatizer()
@@ -206,8 +192,6 @@ Produce stems of all the words in each of the sentences.
 Returns a list of lists of tuples, where the first element is the
 stem of the original word, and the second element is the POS tag.
 """
-
-
 def stem(sentences):
 
     stemmer = PorterStemmer()
@@ -223,8 +207,6 @@ def stem(sentences):
 """
 Print side-by-side comparsion of lemmatization and stemming.
 """
-
-
 def lemma_vs_stem(sentences, lemmatized_sentences, stemmed_sentences):
     for i in range(len(lemmatized_sentences)):
         for j in range(len(lemmatized_sentences[i])):
@@ -236,8 +218,6 @@ def lemma_vs_stem(sentences, lemmatized_sentences, stemmed_sentences):
 Return a new set of POS-tagged words that have been
 chunked into NN, NNP, or VP clusters.
 """
-
-
 def chunk(sentences):
     grammar = r"""
         NN:     {<DT|PP\$>?<JJ>*<NN>}   # chunk determiner/possessive, adjectives and noun
@@ -268,8 +248,6 @@ def chunk(sentences):
 Calculate the frequencies of all unique terms in the sentences.
 Returns a dict of terms that map to integer frequencies.
 """
-
-
 def get_term_freqs(sentences):
     term_freqs = defaultdict(int)
     for sent in sentences:
@@ -282,8 +260,6 @@ def get_term_freqs(sentences):
 Calculate the weight of a term within term_freqs. Returns a
 float weight value.
 """
-
-
 def get_term_weight(term, term_freqs, sentences):
     term_freq = term_freqs[term]
     num_sentences = len(sentences)
@@ -299,8 +275,6 @@ def get_term_weight(term, term_freqs, sentences):
 Calculate the weights of each sentence in the list of sentences,
 using term_freqs. Returns a list of float weights.
 """
-
-
 def get_sentence_weights(sentences, term_freqs):
     weights = []
     for sent in sentences:
@@ -314,13 +288,13 @@ def get_sentence_weights(sentences, term_freqs):
 """
 Main function.
 """
-
-
 def main():
 
     if len(sys.argv) != 3:
-        print("Usage: python summarizer.py [/path/to/file] [summary length]",
+        print("Usage: python summarizer.py [file_path] [summary_length]",
               file=sys.stderr)
+        print("    file_path: path to the file you would like to summarize", file=sys.stderr)
+        print("    summary_length: the number of sentences in generated summary", file=sys.stderr)
         sys.exit(1)
 
     filepath = sys.argv[1]

@@ -55,9 +55,9 @@ Main function.
 """
 def main():
     if len(sys.argv) < 3:
-        print("Usage: python scraper.py search_query max_num_results")
-        print("    search_query: the string query to Google Search on")
-        print("    max_num_results: the integer maximum number of desired results")
+        print("Usage: python scraper.py [search_query] [max_num_results]", file=sys.stderr)
+        print("    search_query: the string query to Google Search on", file=sys.stderr)
+        print("    max_num_results: the integer maximum number of desired results",file=sys.stderr)
         exit()
     myquery = sys.argv[1]
     max_queries = sys.argv[2]

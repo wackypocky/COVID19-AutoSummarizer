@@ -11,10 +11,14 @@ pip install -r requirements.txt
 
 To scrape articles from Google based on a search query and save the title and body of the article into a text file:
 ```
-python scraper.py [query] [number of search results to return]
+python scraper.py [search_query] [max_num_results]
+    search_query: the string query to Google Search on
+    max_num_results: the integer maximum number of desired results
 ```
 
 To summarize an article with the preferred number of sentences:
 ```
-python summarizer.py [/path/to/file] [summary length]
+Usage: python summarizer.py [file_path] [summary_length]
+    file_path: path to the file you would like to summarize
+    summary_length: the number of sentences in generated summary
 ```
