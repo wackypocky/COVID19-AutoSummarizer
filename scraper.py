@@ -19,7 +19,7 @@ def scrapeGoogle(query, max):
     number_result = max # how many results we want
     headers = {"user-agent" : USER_AGENT}
 
-    google_url = "https://www.google.com/search?q=" + query + "&num=" + str(number_result)
+    google_url = "https://www.google.com/search?hl=en&q=" + query + "&num=" + str(number_result)
     print("Scraping...")
     resp = requests.get(google_url, headers=headers)
     if resp.status_code == 200:
