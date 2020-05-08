@@ -20,6 +20,7 @@ def scrapeGoogle(query, max):
     headers = {"user-agent" : USER_AGENT}
 
     google_url = "https://www.google.com/search?q=" + query + "&num=" + str(number_result)
+    print("Scraping...")
     resp = requests.get(google_url, headers=headers)
     if resp.status_code == 200:
         soup = BeautifulSoup(resp.content, "html.parser")
@@ -53,13 +54,19 @@ def scrapeGoogle(query, max):
 Main function.
 """
 def main():
+    if len(sys.argv) < 3:
+        print("Usage: python scraper.py search_query max_num_results")
+        print("    search_query: the string query to Google Search on")
+        print("    max_num_results: the integer maximum number of desired results")
+        exit()
     myquery = sys.argv[1]
     max_queries = sys.argv[2]
+
     results = scrapeGoogle(myquery, max_queries)
 
     headers = {"user-agent" : USER_AGENT}
     token = "5eecec4767199486a01962f7dbf05e30"
-    print("results:", results)
+    num_scrapes = 0
     for item in results:
         encoded_url = urllib.parse.quote(item['link'])
         url = "https://api.diffbot.com/v3/article?token=" + token + "&url=" + encoded_url
@@ -71,12 +78,16 @@ def main():
                 title = object['title']
 
                 # save the objects array for future use
-                obj_filename = 'objects/'+title.replace(" ", '')+".txt"
-                with open(obj_filename, 'w') as f:
-                    f.write(title + '\n')
-                    f.write(str(objects))
+                # obj_filename = 'html_objects/'+title.replace(" ", '')+".txt"
+                # with open(obj_filename, 'w') as f:
+                #     f.write(title + '\n')
+                #     f.write(str(objects))
 
                 text = object['text']
+                if not text:  # if no text, webpage is useless
+                    continue
+
+                num_scrapes += 1
                 if 'date' in object:
                     date = object['date']
                 elif 'estimatedDate' in object:
@@ -99,99 +110,18 @@ def main():
                     region = 'n/a'
 
                 # remove spaces from title for filename
-                filename = "articles/" + title.replace(" ", '') + ".txt"
+                filename = "scraped_articles/" + title.replace(" ", '') + ".txt"
                 with open(filename, 'w') as f:
                     f.write(title + "\n")
                     f.write(date + "\n")
                     f.write(region + "\n")
-                    f.write(str(tag_info)+'\n')
+                    if tag_info != 'n/a':
+                        for tag in tag_info:
+                            f.write('"' + tag + '" ')
+                    else:
+                        f.write(tag_info)
                     f.write(text)
-
-        # resp = requests.get(url=item['link'], headers=headers)
-        # if resp.status_code == 200:
-        #     soup = BeautifulSoup(resp.content, "html.parser")
-        #     # print(soup)
-        #     body = soup.find("body")
-        #     title = body.title
-        #     if title:
-        #         title = title.string
-        #         if not title:
-        #             title = item['title']
-        #         else:
-        #             title = title.replace('\r', '')
-        #             if not title:
-        #                 title = item['title']
-        #             else:
-        #                 title = title.replace('\n', '')
-        #                 if not title:
-        #                     title = item['title']
-        #                 else:
-        #                     title = title.replace('\t', '')
-        #                     if not title:
-        #                         title = item['title']
-        #                     else:
-        #                         title = title.strip()
-        #                         if not title:
-        #                             title = item['title']
-        #
-        #     else:
-        #         title = item['title']
-        #     text = body.find_all(text=True)
-        #
-        #     html_filename = 'html/'+title.replace(" ", '')+".txt"
-        #     with open(html_filename, 'w') as f:
-        #         f.write(title)
-        #         f.write(str(body))
-        #
-        #     output = ''
-        #     blacklist = [
-        #         '[document]',
-        #         'noscript',
-        #         'header',
-        #         'html',
-        #         'meta',
-        #         'head',
-        #         'input',
-        #         'script',
-        #         'style',
-        #         'footer',
-        #         'span',
-        #         # there may be more elements you don't want, such as "style", etc.
-        #     ]
-        #     for t in text:
-        #         if t.parent.name not in blacklist:
-        #             match = re.search('<!--', t)
-        #             if match:
-        #                 continue
-        #             output += '{} '.format(t)
-        #     # for chunk in article:
-        #     #     text = chunk.find_all(string=True)
-        #         # blacklist = [
-        #         # 	'[document]',
-        #         # 	'noscript',
-        #         # 	'header',
-        #         # 	'html',
-        #         # 	'meta',
-        #         # 	'head',
-        #         # 	'input',
-        #         # 	'script',
-        #         #     'style',
-        #         #     'footer',
-        #         #     'span',
-        #         # 	# there may be more elements you don't want, such as "style", etc.
-        #         # ]
-        #         # for t in text:
-        #         # 	if t.parent.name not in blacklist:
-        #         # 		output += '{} '.format(t)
-        #
-        #     # remove extra newlines/spaces
-        #     lines = output.split('\n')
-        #     article = ''
-        #     for line in lines:
-        #         if line != '':
-        #             temp = line.strip()
-        #             if temp:
-        #                 article += temp + '\n'
+    print("Done scraping. Scraped", num_scrapes, "webpages, output in directory 'scraped_articles'")
 
 if __name__ == '__main__':
     main()

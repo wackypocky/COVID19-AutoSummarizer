@@ -292,11 +292,6 @@ def main():
 
     average_weight = sum(sentence_weights) / len(sentence_weights)
 
-    # og_sentences = get_raw_sentences(filepath)
-    # for i in range(len(og_sentences)):
-    #     if sentence_weights[i] > 2 * average_weight:
-    #         summary.append(og_sentences[i])
-
     # Sort by average_weight and pick top sentences
     ranked_sentence = sorted(((sentence_weights[i],s) for i,s in enumerate(og_sentences)), reverse=True)
     # print("Indexes of top ranked_sentence order are ", ranked_sentence)
