@@ -4,7 +4,6 @@
 import re
 import sys
 import math
-import shlex
 import nltk
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from nltk.corpus import wordnet, stopwords
@@ -121,7 +120,7 @@ def preprocess(file_name, num_sentences):
         TITLE = f.readline() # title of article
         DATE = f.readline()
         REGION = f.readline()
-        tags = shlex.split(f.readline()) # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
+        tags = f.readline() # list of tags, each tag is a string with format 'tag_freq_relevanceScore'
         # protect certain characters from splitting
         raw_text = f.read()
 
@@ -139,7 +138,7 @@ def preprocess(file_name, num_sentences):
     sentences = [nltk.word_tokenize(sent) for sent in sentences]
     sentences = [nltk.pos_tag(sent) for sent in sentences]
     sentences = remove_stopwords(sentences)
-    return sentences, og_sentences, tags
+    return sentences, og_sentences
 
 
 """
@@ -262,31 +261,6 @@ def get_term_weight(term, term_freqs, sentences):
     term_ISF = math.log(num_sentences / float(term_SF))
     return term_freq * term_ISF
 
-"""
-Process tags for keyword weighing. Returns list of tuples,
-where first element is the tag and second element is the POS.
-"""
-def process_tags(tags):
-    processed = ''
-    for tag in tags:
-        data = tag.split('_')
-        if len(data) < 3:
-            continue
-        if float(data[2]) > 0.55:
-            processed += ' ' + data[0]
-    processed = nltk.word_tokenize(processed)
-    processed = nltk.pos_tag(processed)
-    processed = remove_stopwords([processed])
-    return processed[0]
-
-
-def process_title(title):
-    processed = title
-    processed = nltk.word_tokenize(processed)
-    processed = nltk.pos_tag(processed)
-    processed = remove_stopwords([processed])
-    return processed[0]
-
 
 def get_sentence_weights(sentences, term_freqs):
     weights = []
@@ -306,33 +280,12 @@ def main():
 
     search_mode, query, pos = ask_search()
 
-    sentences, og_sentences, tags = preprocess(filepath, num_sentences)
-
-    # Process title and tags with POS tagging
-    tags = process_tags(tags)
-    title_keywords = process_title(TITLE)
-    print(title_keywords)
-
+    sentences, og_sentences = preprocess(filepath, num_sentences)
     lemmatized_sentences = lemmatize(sentences)
     stemmed_sentences = stem(lemmatized_sentences)
     chunked_sentences = chunk(stemmed_sentences)
     freqs = get_term_freqs(chunked_sentences)
-
     sentence_weights = get_sentence_weights(chunked_sentences, freqs)
-
-
-    # use keyword search to weigh sentences with tags
-    for tag in tags:
-        pos = get_wordnet_tag(tag[1])
-        search_weights = get_search_weights(lemmatized_sentences, tag[0], pos)
-        sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
-
-    # use keyword search to weigh sentences with title
-    # for tag in title_keywords:
-    #     pos = get_wordnet_tag(tag[1])
-    #     search_weights = get_search_weights(lemmatized_sentences, tag[0], pos)
-    #     sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
-
     if search_mode:
         search_weights = get_search_weights(lemmatized_sentences, query, pos)
         sentence_weights = [a*b for a,b in zip(sentence_weights, search_weights)]
