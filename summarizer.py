@@ -301,8 +301,8 @@ def get_sentence_weights(sentences, term_freqs):
 Main function.
 """
 def main():
-    num_sentences = int(sys.argv[1])
-    filepath = 'articles/folding_at_home.txt'
+    filepath = sys.argv[1]
+    num_sentences = int(sys.argv[2])
 
     search_mode, query, pos = ask_search()
 
