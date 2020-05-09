@@ -22,6 +22,7 @@ The required packages are:
 - wordnet          
 <br />
 <br />
+
 ## Usage
 
 To **run a test** through all functionalities (scraper, summarizer, and evaluation):
