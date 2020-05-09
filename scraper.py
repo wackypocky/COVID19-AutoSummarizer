@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# scraper.py
 
 import urllib
 import requests
