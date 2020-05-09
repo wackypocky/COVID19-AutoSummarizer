@@ -306,7 +306,7 @@ Main function.
 def main():
 
     if len(sys.argv) != 3:
-        print("Usage: python summarizer.py file_path summary_length",
+        print("Usage: python3 summarizer.py file_path summary_length",
               file=sys.stderr)
         print("    file_path: the string path to the file you would like to summarize", file=sys.stderr)
         print("    summary_length: the integer number of sentences in generated summary", file=sys.stderr)
