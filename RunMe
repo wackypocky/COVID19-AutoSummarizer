@@ -4,7 +4,8 @@ python3 nltk_download.py
 python3 scraper.py "covid-19 how can i help" 10
 echo "Summarizing 'scraped_articles/folding_at_home' into 3 sentences..."
 python3 noninteractive_summarizer.py -s -q "contribute" -p "v" scraped_articles/folding_at_home.txt 3 > generated_summary.txt
-echo "Summary generated, output in file 'generated_summary.txt' "
+echo "Summary generated, output in file 'generated_summary.txt'"
 echo "Evaluating effectiveness of 'generated_summary.txt'..."
+echo "(If a subprocess error occurs, please see 'Error Handling' in ReadMe)"
 python3 evaluation.py > scores.txt
 echo "Evaluation completed, output in file 'scores.txt'"

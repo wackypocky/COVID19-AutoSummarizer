@@ -38,6 +38,9 @@ chmod 700
 on the RunMe file for execution permissions.
 <br />
 <br />
+If you run into a subprocess error during evaluation, please see [Error Handling](#Error-Handling).
+<br />
+<br />
 <br />
 
 To **scrape** articles from Google based on a search query and save the title and body of the article into a text file:
