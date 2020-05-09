@@ -18,7 +18,7 @@ else:
 print("======================================================================================================================")
 print("\033[96m\033[1mACTION REQUIRED:\033[0m")
 print("Please navigate to the NLTK downloader window now (it may have popped up behind other open windows).")
-print("Go to the 'All Packages' tab and install the required packages: averaged_perceptron_tagger, punkt, stopwords, wordnet.")
+print("Go to the 'All Packages' tab and install the required packages: \033[1maveraged_perceptron_tagger, punkt, stopwords, wordnet\033[0m.")
 print("After installing, you may close the pop up to resume script execution.")
 
 nltk.download()
