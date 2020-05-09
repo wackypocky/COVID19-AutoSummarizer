@@ -24,6 +24,7 @@ The required packages are:
 
 ## Usage
 
+### Running a Test
 To **run a test** through all functionalities (scraper, summarizer, and evaluation):
 ```
 ./RunMe
@@ -43,6 +44,7 @@ If you run into a subprocess error during evaluation, please see [Error Handling
 <br />
 <br />
 
+### Scraping
 To **scrape** articles from Google based on a search query and save the title and body of the article into a text file:
 ```
 python scraper.py search_query max_num_results
@@ -55,6 +57,7 @@ where:
 <br />
 <br />
 <br/>
+### Summarizing
 To **summarize** an article with the preferred number of sentences:
 ```
 python summarizer.py file_path summary_length
@@ -81,6 +84,7 @@ This is the format of articles produced by the scraper. If you would like to sum
 <br />
 <br />
 <br/>
+### Evaluating
 To **evaluate** the generated summaries in directory 'eval_gen_summaries' with BLEU and ROUGE scores:
 ```
 python3 evaluation.py
