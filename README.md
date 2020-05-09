@@ -1,4 +1,4 @@
-# COVID19-RequestsForAid
+# COVID19-AutoSummarizer
 
 A text summarization project with the goal of automatically summarizing articles scraped from Google containing "requests for aid" or information about how people can help in the COVID-19 crisis. Sentences are prioritized based on relevance and word importance.
 
@@ -46,7 +46,7 @@ If you run into a subprocess error during evaluation, please see [Error Handling
 ### Scraping
 To **scrape** articles from Google based on a search query and save the title and body of the article into a text file:
 ```
-python scraper.py search_query max_num_results
+python3 scraper.py search_query max_num_results
 ```
 where:
 
@@ -60,7 +60,7 @@ where:
 ### Summarizing
 To **summarize** an article with the preferred number of sentences:
 ```
-python summarizer.py file_path summary_length
+python3 summarizer.py file_path summary_length
 ```
 where:
 
