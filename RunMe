@@ -7,8 +7,7 @@
 echo "======================================================================================================================"
 echo "Damon Caron, Julie Kallini, Annie Zhou"
 echo "Automatic Text Summarization for COVID-19"
-echo "TRA301 / COS401 / LIN 304
-"
+echo "TRA301 / COS401 / LIN 304"
 echo "======================================================================================================================"
 
 pip3 install -r requirements.txt
