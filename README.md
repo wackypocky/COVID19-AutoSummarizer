@@ -21,7 +21,6 @@ The required packages are:
 - stopwords
 - wordnet          
 <br />
-<br />
 
 ## Usage
 
