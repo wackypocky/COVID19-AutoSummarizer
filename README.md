@@ -21,7 +21,7 @@ The required packages are:
 - stopwords
 - wordnet          
 <br />
-<br />
+
 ## Usage
 
 To **run a test** through all functionalities (scraper, summarizer, and evaluation):
