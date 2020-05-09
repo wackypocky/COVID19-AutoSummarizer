@@ -12,7 +12,13 @@ Then run
 ```
 python3 nltk_download.py
 ```
-to install the required nltk packages. You may select the packages manually, or download the entire nltk library using the nltk GUI. The required packages are: punkt, stopwords, wordnet.           
+to install the required nltk packages. You may select the packages manually, or download the entire nltk library using the nltk GUI.
+<br />
+The required packages are:
+- averaged_perceptron_tagger
+- punkt
+- stopwords
+- wordnet          
 <br />
 <br />
 ## Usage
