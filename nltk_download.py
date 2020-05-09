@@ -16,7 +16,8 @@ else:
     ssl._create_default_https_context = _create_unverified_https_context
 
 print("======================================================================================================================")
-print("ACTION REQUIRED: Please navigate to the NLTK downloader window now (it may have popped up behind other open windows).")
+print("\033[1mACTION REQUIRED:\033[0m")
+print("Please navigate to the NLTK downloader window now (it may have popped up behind other open windows).")
 print("Go to the 'All Packages' tab and install the required packages: averaged_perceptron_tagger, punkt, stopwords, wordnet.")
 print("After installing, you may close the pop up to resume script execution.")
 
