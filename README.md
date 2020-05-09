@@ -14,6 +14,7 @@ python3 nltk_download.py
 ```
 to install the required nltk packages. You may select the packages manually, or download the entire nltk library using the nltk GUI.
 <br />
+<br />
 The required packages are:
 - averaged_perceptron_tagger
 - punkt
@@ -21,6 +22,7 @@ The required packages are:
 - wordnet          
 <br />
 <br />
+
 ## Usage
 
 To **run a test** through all functionalities (scraper, summarizer, and evaluation):
