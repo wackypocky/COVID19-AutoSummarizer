@@ -1,4 +1,4 @@
-# COVID19-RequestsForAid
+# COVID19-AutoSummarizer
 
 A text summarization project with the goal of automatically summarizing articles scraped from Google containing "requests for aid" or information about how people can help in the COVID-19 crisis. Sentences are prioritized based on relevance and word importance.
 
