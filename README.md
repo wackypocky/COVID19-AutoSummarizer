@@ -17,12 +17,13 @@ to install the required nltk packages. You may select the packages manually, or 
 <br />
 ## Usage
 
-To run a test through all functionalities (scraper, summarizer, and evaluation):
+To **run a test** through all functionalities (scraper, summarizer, and evaluation):
 ```
 ./RunMe
 ```
 This will also install all dependencies from requirements.txt and run nltk_download.py.
 <br />
+<br/>
 You may need to run
 ```
 chmod 700
@@ -32,7 +33,7 @@ on the RunMe file for execution permissions.
 <br />
 <br />
 
-To scrape articles from Google based on a search query and save the title and body of the article into a text file:
+To **scrape** articles from Google based on a search query and save the title and body of the article into a text file:
 ```
 python scraper.py search_query max_num_results
 ```
@@ -44,7 +45,7 @@ where:
 <br />
 <br />
 <br/>
-To summarize an article with the preferred number of sentences:
+To **summarize** an article with the preferred number of sentences:
 ```
 python summarizer.py file_path summary_length
 ```
@@ -70,11 +71,12 @@ This is the format of articles produced by the scraper. If you would like to sum
 <br />
 <br />
 <br/>
-To evaluate the generated summaries in directory 'eval_gen_summaries' with BLEU and ROUGE scores:
+To **evaluate** the generated summaries in directory 'eval_gen_summaries' with BLEU and ROUGE scores:
 ```
 python3 evaluation.py
 ```
 Note that if you wish to add a new generated summary to the directory and evaluate it, you must add the corresponding original text file to the 'eval_ogtext' directory, and a reference summary file to the 'eval_references' directory. Both the original text file and the reference summary file MUST be named identically to the summary file you wish to evaluate.
+<br/>
 <br/>
 If you wish to evaluate the generated summary against more than one reference summary, please add all additional summary text files to a subdirectory in the 'eval_generatedrefs' directory. Again, the subdirectory MUST be named identically to the summary file you wish to evaluate.
 <br />
